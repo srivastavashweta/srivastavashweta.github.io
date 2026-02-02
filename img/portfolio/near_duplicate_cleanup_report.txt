@@ -1,0 +1,38 @@
+[additional-prints] removed=1
+  page-09.jpg -> kept page-08.jpg
+
+[digital-prints] removed=0
+
+[hand-drawn] removed=0
+
+[indigo-saree] removed=0
+
+[kullu-shawls] removed=2
+  page-67.jpg -> kept page-66.jpg
+  page-68.jpg -> kept page-66.jpg
+
+[mens-shirting] removed=0
+
+[portfolio-photos] removed=0
+
+[print-explorations] removed=0
+
+[print-for-kids] removed=10
+  page-41.jpg -> kept page-15.jpg
+  page-31.jpg -> kept page-16.jpg
+  page-39.jpg -> kept page-18.jpg
+  page-43.jpg -> kept page-19.jpg
+  page-44.jpg -> kept page-20.jpg
+  page-36.jpg -> kept page-21.jpg
+  page-35.jpg -> kept page-22.jpg
+  page-34.jpg -> kept page-23.jpg
+  page-48.jpg -> kept page-25.jpg
+  page-46.jpg -> kept page-26.jpg
+
+[profile-highlights] removed=0
+
+[reference-photos] removed=0
+
+[textures] removed=0
+
+[wovens] removed=0
