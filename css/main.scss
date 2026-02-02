@@ -617,10 +617,11 @@ ul {
 }
 
 .portfolio-grid {
+    --tile-size: clamp(180px, 24vw, 260px);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--tile-size), var(--tile-size)));
     gap: 1.2rem;
-    justify-items: center;
+    justify-content: center;
 }
 
 
@@ -637,8 +638,8 @@ ul {
     margin: 0;
     position: relative;
     overflow: hidden;
-    width: 100%;
-    max-width: 320px;
+    width: var(--tile-size, 100%);
+    max-width: 100%;
 }
 
 .portfolio-card.is-hidden {
