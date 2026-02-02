@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shweta Srivastava portfolio">
+
+  <title>Shweta Srivastava</title>
+
+  <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="/{{site.baseurl}}" title="Home">Shweta Srivastava</a>
+        <nav class="top-nav">
+          <a href="/about/">About</a>
+          <a href="/textile/">Textile Journey</a>
+          <a href="/ui/">UI Journey</a>
+          <a href="https://www.linkedin.com/in/shwetasrivastava2106/">LinkedIn</a>
+          <a href="mailto:s2106shwetaa@gmail.com">Email</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="site-main">
+      {{content}}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© 2026 Shweta Srivastava</span>
+        <span>Textile Design · Product Design · HCI</span>
+      </div>
+    </footer>
+  </div>
+  <script>
+    (function() {
+      var carousels = document.querySelectorAll('[data-carousel]');
+      carousels.forEach(function(carousel) {
+        var track = carousel.querySelector('[data-carousel-track]');
+        var prev = carousel.querySelector('[data-carousel-prev]');
+        var next = carousel.querySelector('[data-carousel-next]');
+
+        if (!track || !prev || !next) {
+          return;
+        }
+
+        var updateButtons = function() {
+          var maxScroll = track.scrollWidth - track.clientWidth;
+          prev.disabled = track.scrollLeft <= 0;
+          next.disabled = track.scrollLeft >= maxScroll - 1;
+        };
+
+        var scrollByAmount = function(direction) {
+          var amount = track.clientWidth * 0.9 * direction;
+          track.scrollBy({ left: amount, behavior: 'smooth' });
+        };
+
+        prev.addEventListener('click', function() {
+          scrollByAmount(-1);
+        });
+
+        next.addEventListener('click', function() {
+          scrollByAmount(1);
+        });
+
+        track.addEventListener('scroll', updateButtons, { passive: true });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
+      });
+    })();
+  </script>
+  <script>
+    (function() {
+      var galleryImages = document.querySelectorAll('.portfolio-section .portfolio-grid img');
+      if (!galleryImages.length) {
+        return;
+      }
+
+      var lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.innerHTML = [
+        '<div class="lightbox-backdrop" data-lightbox-close></div>',
+        '<div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Image viewer">',
+        '<button class="lightbox-close" type="button" aria-label="Close" data-lightbox-close>&times;</button>',
+        '<button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">&#8249;</button>',
+        '<figure class="lightbox-figure">',
+        '<img class="lightbox-image" alt="">',
+        '<figcaption class="lightbox-caption"></figcaption>',
+        '</figure>',
+        '<button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">&#8250;</button>',
+        '</div>'
+      ].join('');
+      document.body.appendChild(lightbox);
+
+      var imageEl = lightbox.querySelector('.lightbox-image');
+      var captionEl = lightbox.querySelector('.lightbox-caption');
+      var prevBtn = lightbox.querySelector('.lightbox-prev');
+      var nextBtn = lightbox.querySelector('.lightbox-next');
+      var closeTargets = lightbox.querySelectorAll('[data-lightbox-close]');
+      var currentList = [];
+      var currentIndex = 0;
+
+      var buildCaption = function(node) {
+        var section = node.closest('.portfolio-section');
+        var title = '';
+        var process = '';
+        var imageCaption = '';
+
+        if (section) {
+          var titleEl = section.querySelector('h2');
+          title = titleEl ? titleEl.textContent : '';
+          process = section.getAttribute('data-process') || '';
+        }
+
+        var figure = node.closest('figure');
+        if (figure) {
+          imageCaption = figure.getAttribute('data-caption') || '';
+        }
+        if (!imageCaption && node.alt) {
+          imageCaption = node.alt;
+        }
+
+        var parts = [];
+        if (title) parts.push(title);
+        if (imageCaption) parts.push(imageCaption);
+        if (process) parts.push(process);
+        return parts.join(' · ');
+      };
+
+      var showImage = function(index) {
+        if (!currentList.length) {
+          return;
+        }
+        currentIndex = (index + currentList.length) % currentList.length;
+        var node = currentList[currentIndex];
+        imageEl.src = node.src;
+        imageEl.alt = node.alt || '';
+        captionEl.textContent = buildCaption(node);
+      };
+
+      var openLightbox = function(list, index) {
+        currentList = list;
+        lightbox.classList.add('is-open');
+        document.body.classList.add('lightbox-open');
+        showImage(index);
+      };
+
+      var closeLightbox = function() {
+        lightbox.classList.remove('is-open');
+        document.body.classList.remove('lightbox-open');
+        imageEl.src = '';
+      };
+
+      var assignCaptions = function() {
+        var sections = document.querySelectorAll('.portfolio-section[data-captions]');
+        sections.forEach(function(section) {
+          var jsonPath = section.getAttribute('data-captions');
+          if (!jsonPath) {
+            return;
+          }
+          fetch(jsonPath)
+            .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Failed to load captions');
+              }
+              return response.json();
+            })
+            .then(function(data) {
+              if (!Array.isArray(data)) {
+                return;
+              }
+              var map = {};
+              data.forEach(function(item) {
+                if (item && item.file && item.caption) {
+                  map[item.file] = item.caption;
+                }
+              });
+              var images = section.querySelectorAll('img');
+              images.forEach(function(img) {
+                var parts = img.src.split('/');
+                var file = parts[parts.length - 1];
+                var caption = map[file];
+                if (!caption) {
+                  return;
+                }
+                var figure = img.closest('figure');
+                if (figure) {
+                  figure.setAttribute('data-caption', caption);
+                }
+              });
+            })
+            .catch(function() {});
+        });
+      };
+
+      assignCaptions();
+
+      galleryImages.forEach(function(img) {
+        img.addEventListener('click', function(event) {
+          event.preventDefault();
+          var section = img.closest('.portfolio-section');
+          if (!section) {
+            return;
+          }
+          currentList = Array.from(section.querySelectorAll('img'));
+          openLightbox(currentList, currentList.indexOf(img));
+        });
+      });
+
+      prevBtn.addEventListener('click', function() {
+        showImage(currentIndex - 1);
+      });
+
+      nextBtn.addEventListener('click', function() {
+        showImage(currentIndex + 1);
+      });
+
+      closeTargets.forEach(function(target) {
+        target.addEventListener('click', closeLightbox);
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (!lightbox.classList.contains('is-open')) {
+          return;
+        }
+        if (event.key === 'Escape') {
+          closeLightbox();
+        } else if (event.key === 'ArrowRight') {
+          showImage(currentIndex + 1);
+        } else if (event.key === 'ArrowLeft') {
+          showImage(currentIndex - 1);
+        }
+      });
+    })();
+  </script>
+{% include analytics.html %}
+</body>
+
+</html>

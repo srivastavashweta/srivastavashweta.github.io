@@ -1,0 +1,418 @@
+[
+  {
+    "file": "page-01.jpg",
+    "caption": "Reference photo 01"
+  },
+  {
+    "file": "page-02.jpg",
+    "caption": "Reference photo 02"
+  },
+  {
+    "file": "page-03.jpg",
+    "caption": "Reference photo 03"
+  },
+  {
+    "file": "page-04.jpg",
+    "caption": "Reference photo 04"
+  },
+  {
+    "file": "page-05.jpg",
+    "caption": "Reference photo 05"
+  },
+  {
+    "file": "page-06.jpg",
+    "caption": "Reference photo 06"
+  },
+  {
+    "file": "page-07.jpg",
+    "caption": "Reference photo 07"
+  },
+  {
+    "file": "page-08.jpg",
+    "caption": "Reference photo 08"
+  },
+  {
+    "file": "page-09.jpg",
+    "caption": "Reference photo 09"
+  },
+  {
+    "file": "page-10.jpg",
+    "caption": "Reference photo 10"
+  },
+  {
+    "file": "page-11.jpg",
+    "caption": "Reference photo 11"
+  },
+  {
+    "file": "page-12.jpg",
+    "caption": "Reference photo 12"
+  },
+  {
+    "file": "page-13.jpg",
+    "caption": "Reference photo 13"
+  },
+  {
+    "file": "page-14.jpg",
+    "caption": "Reference photo 14"
+  },
+  {
+    "file": "page-15.jpg",
+    "caption": "Reference photo 15"
+  },
+  {
+    "file": "page-16.jpg",
+    "caption": "Reference photo 16"
+  },
+  {
+    "file": "page-17.jpg",
+    "caption": "Reference photo 17"
+  },
+  {
+    "file": "page-18.jpg",
+    "caption": "Reference photo 18"
+  },
+  {
+    "file": "page-19.jpg",
+    "caption": "Reference photo 19"
+  },
+  {
+    "file": "page-20.jpg",
+    "caption": "Reference photo 20"
+  },
+  {
+    "file": "page-21.jpg",
+    "caption": "Reference photo 21"
+  },
+  {
+    "file": "page-22.jpg",
+    "caption": "Reference photo 22"
+  },
+  {
+    "file": "page-23.jpg",
+    "caption": "Reference photo 23"
+  },
+  {
+    "file": "page-24.jpg",
+    "caption": "Reference photo 24"
+  },
+  {
+    "file": "page-25.jpg",
+    "caption": "Reference photo 25"
+  },
+  {
+    "file": "page-26.jpg",
+    "caption": "Reference photo 26"
+  },
+  {
+    "file": "page-27.jpg",
+    "caption": "Reference photo 27"
+  },
+  {
+    "file": "page-28.jpg",
+    "caption": "Reference photo 28"
+  },
+  {
+    "file": "page-29.jpg",
+    "caption": "Reference photo 29"
+  },
+  {
+    "file": "page-30.jpg",
+    "caption": "Reference photo 30"
+  },
+  {
+    "file": "page-31.jpg",
+    "caption": "Reference photo 31"
+  },
+  {
+    "file": "page-32.jpg",
+    "caption": "Reference photo 32"
+  },
+  {
+    "file": "page-33.jpg",
+    "caption": "Reference photo 33"
+  },
+  {
+    "file": "page-34.jpg",
+    "caption": "Reference photo 34"
+  },
+  {
+    "file": "page-35.jpg",
+    "caption": "Reference photo 35"
+  },
+  {
+    "file": "page-36.jpg",
+    "caption": "Reference photo 36"
+  },
+  {
+    "file": "page-37.jpg",
+    "caption": "Reference photo 37"
+  },
+  {
+    "file": "page-38.jpg",
+    "caption": "Reference photo 38"
+  },
+  {
+    "file": "page-39.jpg",
+    "caption": "Reference photo 39"
+  },
+  {
+    "file": "page-40.jpg",
+    "caption": "Reference photo 40"
+  },
+  {
+    "file": "page-41.jpg",
+    "caption": "Reference photo 41"
+  },
+  {
+    "file": "page-42.jpg",
+    "caption": "Reference photo 42"
+  },
+  {
+    "file": "page-43.jpg",
+    "caption": "Reference photo 43"
+  },
+  {
+    "file": "page-44.jpg",
+    "caption": "Reference photo 44"
+  },
+  {
+    "file": "page-45.jpg",
+    "caption": "Reference photo 45"
+  },
+  {
+    "file": "page-46.jpg",
+    "caption": "Reference photo 46"
+  },
+  {
+    "file": "page-47.jpg",
+    "caption": "Reference photo 47"
+  },
+  {
+    "file": "page-48.jpg",
+    "caption": "Reference photo 48"
+  },
+  {
+    "file": "page-49.jpg",
+    "caption": "Reference photo 49"
+  },
+  {
+    "file": "page-50.jpg",
+    "caption": "Reference photo 50"
+  },
+  {
+    "file": "page-51.jpg",
+    "caption": "Reference photo 51"
+  },
+  {
+    "file": "page-52.jpg",
+    "caption": "Reference photo 52"
+  },
+  {
+    "file": "page-53.jpg",
+    "caption": "Reference photo 53"
+  },
+  {
+    "file": "page-54.jpg",
+    "caption": "Reference photo 54"
+  },
+  {
+    "file": "page-55.jpg",
+    "caption": "Reference photo 55"
+  },
+  {
+    "file": "page-56.jpg",
+    "caption": "Reference photo 56"
+  },
+  {
+    "file": "page-57.jpg",
+    "caption": "Reference photo 57"
+  },
+  {
+    "file": "page-58.jpg",
+    "caption": "Reference photo 58"
+  },
+  {
+    "file": "page-59.jpg",
+    "caption": "Reference photo 59"
+  },
+  {
+    "file": "page-60.jpg",
+    "caption": "Reference photo 60"
+  },
+  {
+    "file": "page-61.jpg",
+    "caption": "Reference photo 61"
+  },
+  {
+    "file": "page-62.jpg",
+    "caption": "Reference photo 62"
+  },
+  {
+    "file": "page-63.jpg",
+    "caption": "Reference photo 63"
+  },
+  {
+    "file": "page-64.jpg",
+    "caption": "Reference photo 64"
+  },
+  {
+    "file": "page-65.jpg",
+    "caption": "Reference photo 65"
+  },
+  {
+    "file": "page-66.jpg",
+    "caption": "Reference photo 66"
+  },
+  {
+    "file": "page-67.jpg",
+    "caption": "Reference photo 67"
+  },
+  {
+    "file": "page-68.jpg",
+    "caption": "Reference photo 68"
+  },
+  {
+    "file": "page-69.jpg",
+    "caption": "Reference photo 69"
+  },
+  {
+    "file": "page-70.jpg",
+    "caption": "Reference photo 70"
+  },
+  {
+    "file": "page-71.jpg",
+    "caption": "Reference photo 71"
+  },
+  {
+    "file": "page-72.jpg",
+    "caption": "Reference photo 72"
+  },
+  {
+    "file": "page-73.jpg",
+    "caption": "Reference photo 73"
+  },
+  {
+    "file": "page-74.jpg",
+    "caption": "Reference photo 74"
+  },
+  {
+    "file": "page-75.jpg",
+    "caption": "Reference photo 75"
+  },
+  {
+    "file": "page-76.jpg",
+    "caption": "Reference photo 76"
+  },
+  {
+    "file": "page-77.jpg",
+    "caption": "Reference photo 77"
+  },
+  {
+    "file": "page-78.jpg",
+    "caption": "Reference photo 78"
+  },
+  {
+    "file": "page-79.jpg",
+    "caption": "Reference photo 79"
+  },
+  {
+    "file": "page-80.jpg",
+    "caption": "Reference photo 80"
+  },
+  {
+    "file": "page-81.jpg",
+    "caption": "Reference photo 81"
+  },
+  {
+    "file": "page-82.jpg",
+    "caption": "Reference photo 82"
+  },
+  {
+    "file": "page-83.jpg",
+    "caption": "Reference photo 83"
+  },
+  {
+    "file": "page-84.jpg",
+    "caption": "Reference photo 84"
+  },
+  {
+    "file": "page-85.jpg",
+    "caption": "Reference photo 85"
+  },
+  {
+    "file": "page-86.jpg",
+    "caption": "Reference photo 86"
+  },
+  {
+    "file": "page-87.jpg",
+    "caption": "Reference photo 87"
+  },
+  {
+    "file": "page-88.jpg",
+    "caption": "Reference photo 88"
+  },
+  {
+    "file": "page-89.jpg",
+    "caption": "Reference photo 89"
+  },
+  {
+    "file": "page-90.jpg",
+    "caption": "Reference photo 90"
+  },
+  {
+    "file": "page-91.jpg",
+    "caption": "Reference photo 91"
+  },
+  {
+    "file": "page-92.jpg",
+    "caption": "Reference photo 92"
+  },
+  {
+    "file": "page-93.jpg",
+    "caption": "Reference photo 93"
+  },
+  {
+    "file": "page-94.jpg",
+    "caption": "Reference photo 94"
+  },
+  {
+    "file": "page-95.jpg",
+    "caption": "Reference photo 95"
+  },
+  {
+    "file": "page-96.jpg",
+    "caption": "Reference photo 96"
+  },
+  {
+    "file": "page-97.jpg",
+    "caption": "Reference photo 97"
+  },
+  {
+    "file": "page-98.jpg",
+    "caption": "Reference photo 98"
+  },
+  {
+    "file": "page-99.jpg",
+    "caption": "Reference photo 99"
+  },
+  {
+    "file": "page-100.jpg",
+    "caption": "Reference photo 100"
+  },
+  {
+    "file": "page-101.jpg",
+    "caption": "Reference photo 101"
+  },
+  {
+    "file": "page-102.jpg",
+    "caption": "Reference photo 102"
+  },
+  {
+    "file": "page-103.jpg",
+    "caption": "Reference photo 103"
+  },
+  {
+    "file": "page-104.jpg",
+    "caption": "Reference photo 104"
+  }
+]
