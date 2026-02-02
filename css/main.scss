@@ -624,6 +624,11 @@ ul {
     justify-content: center;
 }
 
+#mens-shirting .portfolio-grid,
+#print-for-kids .portfolio-grid {
+    --tile-size: clamp(204px, 26.4vw, 300px);
+}
+
 
 .portfolio-card {
     background: var(--card);
