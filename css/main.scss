@@ -621,7 +621,6 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--tile-size), 1fr));
     gap: 1.2rem;
-    align-items: start;
 }
 
 
@@ -637,7 +636,7 @@ ul {
     overflow: hidden;
     width: 100%;
     max-width: 100%;
-    align-self: start;
+    aspect-ratio: 4 / 5;
 }
 
 .portfolio-card.is-hidden {
@@ -650,10 +649,10 @@ ul {
 
 .portfolio-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 18px;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
     cursor: zoom-in;
 }
