@@ -619,8 +619,9 @@ ul {
 .portfolio-grid {
     --tile-size: clamp(170px, 22vw, 250px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--tile-size), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(var(--tile-size), var(--tile-size)));
     gap: 1.2rem;
+    justify-content: center;
 }
 
 
@@ -637,6 +638,11 @@ ul {
     width: 100%;
     max-width: 100%;
     aspect-ratio: 4 / 5;
+}
+
+#mens-shirting .portfolio-card,
+#print-for-kids .portfolio-card {
+    aspect-ratio: 16 / 10;
 }
 
 .portfolio-card.is-hidden {
