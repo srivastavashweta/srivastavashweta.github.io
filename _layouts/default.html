@@ -112,6 +112,24 @@
       var currentList = [];
       var currentIndex = 0;
 
+      var normalizeSectionGrids = function(section) {
+        var grids = Array.from(section.querySelectorAll('.portfolio-grid'));
+        if (grids.length <= 1) {
+          return;
+        }
+
+        var primaryGrid = grids[0];
+        grids.slice(1).forEach(function(grid) {
+          var cards = Array.from(grid.querySelectorAll('.portfolio-card'));
+          cards.forEach(function(card) {
+            primaryGrid.appendChild(card);
+          });
+          grid.remove();
+        });
+      };
+
+      sections.forEach(normalizeSectionGrids);
+
       var getHighlightLimit = function(section) {
         var rawValue = parseInt(section.getAttribute('data-highlight-limit') || '', 10);
         if (!rawValue || rawValue < 1) {
