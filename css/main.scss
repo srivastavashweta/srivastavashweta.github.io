@@ -624,8 +624,10 @@ ul {
     padding: 0.2rem;
     box-shadow: var(--soft-shadow);
     border: 1px solid rgba(28, 30, 38, 0.08);
-    display: grid;
-    gap: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 4 / 5;
     margin: 0;
     position: relative;
     overflow: hidden;
@@ -633,9 +635,11 @@ ul {
 
 .portfolio-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 12px;
     display: block;
+    object-fit: contain;
+    object-position: center;
     cursor: zoom-in;
 }
 
