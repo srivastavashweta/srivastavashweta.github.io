@@ -360,6 +360,11 @@ ul {
     gap: 0.8rem;
 }
 
+.section-actions .btn[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -615,6 +620,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     gap: 1.2rem;
+    justify-items: center;
 }
 
 
@@ -631,6 +637,16 @@ ul {
     margin: 0;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 320px;
+}
+
+.portfolio-card.is-hidden {
+    display: none;
+}
+
+.portfolio-grid.is-empty {
+    display: none;
 }
 
 .portfolio-card img {

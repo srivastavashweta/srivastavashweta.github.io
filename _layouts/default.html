@@ -77,10 +77,16 @@
   </script>
   <script>
     (function() {
+      var sections = Array.from(document.querySelectorAll('.portfolio-section'));
       var galleryImages = document.querySelectorAll('.portfolio-section .portfolio-grid img');
-      if (!galleryImages.length) {
+      if (!sections.length || !galleryImages.length) {
         return;
       }
+
+      var globalToggle = document.querySelector('[data-global-portfolio-toggle]');
+      var supportsViewModes = !!document.querySelector('[data-section-toggle], [data-global-portfolio-toggle]');
+      var modeStorageKey = 'textile-portfolio-global-expanded';
+      var isGlobalExpanded = false;
 
       var lightbox = document.createElement('div');
       lightbox.className = 'lightbox';
@@ -105,6 +111,88 @@
       var closeTargets = lightbox.querySelectorAll('[data-lightbox-close]');
       var currentList = [];
       var currentIndex = 0;
+
+      var getHighlightLimit = function(section) {
+        var rawValue = parseInt(section.getAttribute('data-highlight-limit') || '', 10);
+        if (!rawValue || rawValue < 1) {
+          return 12;
+        }
+        return rawValue;
+      };
+
+      var getSectionCards = function(section) {
+        return Array.from(section.querySelectorAll('.portfolio-card'));
+      };
+
+      var getVisibleImages = function(section) {
+        return Array.from(section.querySelectorAll('.portfolio-card:not(.is-hidden) img'));
+      };
+
+      var syncGridVisibility = function(section) {
+        var grids = section.querySelectorAll('.portfolio-grid');
+        grids.forEach(function(grid) {
+          var hasVisibleCard = !!grid.querySelector('.portfolio-card:not(.is-hidden)');
+          grid.classList.toggle('is-empty', !hasVisibleCard);
+        });
+      };
+
+      var updateSectionToggle = function(section, expanded, hiddenCount) {
+        var toggle = section.querySelector('[data-section-toggle]');
+        if (!toggle) {
+          return;
+        }
+
+        var sectionActions = toggle.closest('.section-actions');
+        if (hiddenCount <= 0) {
+          if (sectionActions) {
+            sectionActions.style.display = 'none';
+          }
+          return;
+        }
+
+        if (sectionActions) {
+          sectionActions.style.display = '';
+        }
+
+        if (isGlobalExpanded) {
+          toggle.textContent = 'All sections expanded';
+          toggle.disabled = true;
+          toggle.setAttribute('aria-expanded', 'true');
+          return;
+        }
+
+        toggle.disabled = false;
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        toggle.textContent = expanded ? 'Show highlights' : 'View full series (' + hiddenCount + ' more)';
+      };
+
+      var applySectionVisibility = function(section) {
+        var cards = getSectionCards(section);
+        var limit = getHighlightLimit(section);
+        var canCollapse = cards.length > limit;
+        var expanded = canCollapse && (isGlobalExpanded || section.getAttribute('data-expanded') === 'true');
+
+        cards.forEach(function(card, index) {
+          var hideCard = canCollapse && !expanded && index >= limit;
+          card.classList.toggle('is-hidden', hideCard);
+        });
+
+        syncGridVisibility(section);
+        updateSectionToggle(section, expanded, Math.max(0, cards.length - limit));
+      };
+
+      var applyAllSections = function() {
+        sections.forEach(applySectionVisibility);
+
+        if (globalToggle) {
+          globalToggle.textContent = isGlobalExpanded ? 'Show highlights only' : 'Show all sections fully';
+          globalToggle.setAttribute('aria-pressed', isGlobalExpanded ? 'true' : 'false');
+        }
+
+        try {
+          localStorage.setItem(modeStorageKey, isGlobalExpanded ? '1' : '0');
+        } catch (error) {}
+      };
 
       var buildCaption = function(node) {
         var section = node.closest('.portfolio-section');
@@ -146,9 +234,12 @@
 
       var openLightbox = function(list, index) {
         currentList = list;
+        if (!currentList.length) {
+          return;
+        }
         lightbox.classList.add('is-open');
         document.body.classList.add('lightbox-open');
-        showImage(index);
+        showImage(index >= 0 ? index : 0);
       };
 
       var closeLightbox = function() {
@@ -158,8 +249,8 @@
       };
 
       var assignCaptions = function() {
-        var sections = document.querySelectorAll('.portfolio-section[data-captions]');
-        sections.forEach(function(section) {
+        var captionSections = document.querySelectorAll('.portfolio-section[data-captions]');
+        captionSections.forEach(function(section) {
           var jsonPath = section.getAttribute('data-captions');
           if (!jsonPath) {
             return;
@@ -199,6 +290,39 @@
         });
       };
 
+      if (supportsViewModes) {
+        try {
+          isGlobalExpanded = localStorage.getItem(modeStorageKey) === '1';
+        } catch (error) {}
+
+        sections.forEach(function(section) {
+          if (!section.hasAttribute('data-expanded')) {
+            section.setAttribute('data-expanded', 'false');
+          }
+
+          var sectionToggle = section.querySelector('[data-section-toggle]');
+          if (sectionToggle) {
+            sectionToggle.addEventListener('click', function() {
+              if (isGlobalExpanded) {
+                return;
+              }
+
+              var isExpanded = section.getAttribute('data-expanded') === 'true';
+              section.setAttribute('data-expanded', isExpanded ? 'false' : 'true');
+              applySectionVisibility(section);
+            });
+          }
+        });
+
+        if (globalToggle) {
+          globalToggle.addEventListener('click', function() {
+            isGlobalExpanded = !isGlobalExpanded;
+            applyAllSections();
+          });
+        }
+
+        applyAllSections();
+      }
       assignCaptions();
 
       galleryImages.forEach(function(img) {
@@ -208,7 +332,7 @@
           if (!section) {
             return;
           }
-          currentList = Array.from(section.querySelectorAll('img'));
+          currentList = getVisibleImages(section);
           openLightbox(currentList, currentList.indexOf(img));
         });
       });
